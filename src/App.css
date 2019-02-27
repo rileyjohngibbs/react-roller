@@ -1,3 +1,7 @@
+button {
+  font-size: inherit;
+}
+
 .App {
   text-align: center;
 }
@@ -21,6 +25,44 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.die {
+  float: left;
+}
+
+.die button {
+  margin: 3px;
+  background-color: lightblue;
+  padding: 5px;
+  width: 3em;
+}
+
+.die-label {
+  font-size: small;
+}
+
+.die-remove button {
+  font-size: small;
+  padding: 5px;
+  width: auto;
+  background-color: pink;
+}
+
+#dicepool {
+  padding: 10px;
+}
+
+#total-display {
+  font-size: large;
+}
+
+#adders button {
+  background-color: yellowgreen;
+}
+
+#controllers button {
+  background-color: orange;
 }
 
 @keyframes App-logo-spin {
