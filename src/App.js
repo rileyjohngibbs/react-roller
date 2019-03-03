@@ -6,7 +6,10 @@ import Die from './Die';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {dice: []};
+    this.state = {
+      dice: [],
+      mod: 0
+    };
   }
 
   addDie(faces) {
@@ -30,9 +33,19 @@ class App extends Component {
   renderDesc() {
     const counts = {};
     this.state.dice.forEach((die) => {
-      counts[die.faces] = counts[die.faces] === undefined ? 1 : counts[die.faces] + 1;
+      counts[die.faces] = counts[die.faces] === undefined
+        ? 1
+        : counts[die.faces] + 1;
     });
-    return Object.keys(counts).map((type) => counts[type] + "d" + type).join(" + ");
+    const pool = Object.keys(counts).map(
+      (type) => counts[type] + "d" + type
+    ).join(" + ");
+    const mod = this.state.mod
+      ? this.state.mod > 0
+        ? " + " + this.state.mod
+        : " - " + (-this.state.mod)
+      : "";
+    return pool + mod;
   }
 
   renderDie(key) {
@@ -71,10 +84,16 @@ class App extends Component {
         </div>
         <div id="controllers">
           <div id="total-display" className="row">
-            <div className="col">
+            <div className="col-8" style={{padding: 0}}>
+              <button style={{float: "left"}} onClick={() => {this.setState({mod: this.state.mod - 1})}}>
+                -
+              </button>
               {this.renderDesc()}
+              <button style={{float: "right"}} onClick={() => {this.setState({mod: this.state.mod + 1})}}>
+                +
+              </button>
             </div>
-            <div className="col">
+            <div className="col-4">
               Total: {this.calcSum()}
             </div>
           </div>
@@ -90,6 +109,7 @@ class App extends Component {
                 while (this.state.dice.length) {
                   this.removeDie(0);
                 }
+                this.setState({mod: 0});
               }}>
               Clear Pool
             </button>
