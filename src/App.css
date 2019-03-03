@@ -28,14 +28,16 @@ button {
 }
 
 .die {
-  float: left;
+  margin: 5px 0;
+  background-color: #EEE;
+  border: 1px solid white;
+  padding: 0;
 }
 
 .die button {
-  margin: 3px;
   background-color: lightblue;
   padding: 5px;
-  width: 3em;
+  width: 100%;
 }
 
 .die-label {
@@ -45,12 +47,8 @@ button {
 .die-remove button {
   font-size: small;
   padding: 5px;
-  width: auto;
+  width: 100%;
   background-color: pink;
-}
-
-#dicepool {
-  padding: 10px;
 }
 
 #total-display {

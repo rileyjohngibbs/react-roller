@@ -29,7 +29,7 @@ class App extends Component {
 
   renderDie(key) {
     return (
-      <div key={key} className="die">
+      <div key={key} className="die col-2">
         <button onClick={() => this.rollDie(key)}>
           {this.state.dice[key].value}
         </button>
@@ -51,36 +51,38 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div id="adders">
+      <div className="App container">
+        <div id="adders" className="row">
           {[4, 6, 8, 10, 100, 12, 20].map((faces, key) => {
             return (
-              <button key={key} onClick={() => {this.addDie(faces);}}>
+              <button className="col" key={key} onClick={() => {this.addDie(faces);}}>
                 +d{faces}
               </button>
             )
           })}
         </div>
         <div id="controllers">
-          <div id="total-display">
-            Total: {this.calcSum()}
+          <div id="total-display" className="row">
+            <div className="col">
+              Total: {this.calcSum()}
+            </div>
           </div>
-          <div>
-            <button onClick={() => {
+          <div className="row">
+            <button className="col" onClick={() => {
                 this.state.dice.forEach((_, key) => {
                   this.rollDie(key);
                 });
               }}>
               Roll Dice
             </button>
-            <button onClick={() => {
+            <button className="col" onClick={() => {
                 while (this.state.dice.length) {
                   this.removeDie(0);
                 }
               }}>
               Clear Pool
             </button>
-            <button onClick={() => {
+            <button className="col" onClick={() => {
                 const dice = this.state.dice;
                 dice.forEach((d) => {d.value = 0});
                 this.setState({dice});
@@ -89,7 +91,7 @@ class App extends Component {
             </button>
           </div>
         </div>
-        <div id="dicepool">
+        <div id="dicepool" className="row">
           {this.state.dice.map((_, key) => {
             return this.renderDie(key);
           })}
