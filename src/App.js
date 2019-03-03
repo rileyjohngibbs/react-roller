@@ -27,6 +27,14 @@ class App extends Component {
     this.setState({dice});
   }
 
+  renderDesc() {
+    const counts = {};
+    this.state.dice.forEach((die) => {
+      counts[die.faces] = counts[die.faces] === undefined ? 1 : counts[die.faces] + 1;
+    });
+    return Object.keys(counts).map((type) => counts[type] + "d" + type).join(" + ");
+  }
+
   renderDie(key) {
     return (
       <div key={key} className="die col-2">
@@ -63,6 +71,9 @@ class App extends Component {
         </div>
         <div id="controllers">
           <div id="total-display" className="row">
+            <div className="col">
+              {this.renderDesc()}
+            </div>
             <div className="col">
               Total: {this.calcSum()}
             </div>
