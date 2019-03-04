@@ -2,6 +2,10 @@ button {
   font-size: inherit;
 }
 
+button:focus {
+  outline: none !important;
+}
+
 .App {
   text-align: center;
 }
