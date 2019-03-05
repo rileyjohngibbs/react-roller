@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Die from './Die';
+import DieComp from './DieComp';
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class App extends Component {
 
   addDie(faces) {
     const dice = this.state.dice;
-    dice.push(new Die(faces));
+    dice.push({faces: faces, value: 0});
     this.setState({dice});
   }
 
@@ -26,7 +26,7 @@ class App extends Component {
 
   rollDie(key) {
     const dice = this.state.dice;
-    dice[key].value = dice[key].roll();
+    dice[key].value = Math.ceil(Math.random() * dice[key].faces);
     this.setState({dice});
   }
 
@@ -48,29 +48,23 @@ class App extends Component {
     return pool + mod;
   }
 
-  renderDie(key) {
-    return (
-      <div key={key} className="die col-2">
-        <button onClick={() => this.rollDie(key)}>
-          {this.state.dice[key].value}
-        </button>
-        <div className="die-label">
-          d{this.state.dice[key].faces}
-        </div>
-        <div className="die-remove">
-          <button onClick={() => this.removeDie(key)}>
-            Drop
-          </button>
-        </div>
-      </div>
-    )
-  }
-
   calcSum() {
     return this.state.dice.reduce((acc, die) => acc + die.value, 0);
   }
 
   render() {
+    const dice = this.state.dice.map((die, key) => {
+      return <DieComp key={key} className="die col-2"
+        faces={die.faces}
+        value={die.value}
+        rollBack={(newValue) => {
+          const dice = this.state.dice;
+          dice[key].value = newValue;
+          this.setState({dice});
+        }}
+        tearDown={() => this.removeDie(key)}
+      />
+    });
     return (
       <div className="App container">
         <div id="adders" className="row">
@@ -123,9 +117,7 @@ class App extends Component {
           </div>
         </div>
         <div id="dicepool" className="row">
-          {this.state.dice.map((_, key) => {
-            return this.renderDie(key);
-          })}
+          {dice}
         </div>
       </div>
     );
