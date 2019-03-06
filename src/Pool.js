@@ -48,7 +48,7 @@ class Pool extends Component {
   }
 
   calcSum() {
-    return this.state.dice.reduce((acc, die) => acc + die.value, 0);
+    return this.state.dice.reduce((acc, die) => acc + die.value, 0) + this.state.mod;
   }
 
   render() {
