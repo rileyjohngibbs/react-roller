@@ -1,5 +1,6 @@
 button {
   font-size: inherit;
+  border: 15px inset lightgray;
 }
 
 .App {
