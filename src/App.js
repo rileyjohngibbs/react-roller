@@ -74,13 +74,15 @@ class App extends Component {
     return (
       <div className="App container">
         <div id="adders" className="row">
-          {[4, 6, 8, 10, 100, 12, 20].map((faces, key) => {
+          {[4, 6, 8, 10, 100, 12, 20, 28, 2, 9, 7].map((faces, key) => {
             return (
               <button className="col" key={key} onClick={() => {this.addDie(faces);}}>
                 +d{faces}
               </button>
             )
           })}
+
+
         </div>
         <div id="controllers">
           <div id="total-display" className="row">
