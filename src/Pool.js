@@ -47,8 +47,23 @@ class Pool extends Component {
     return pool + mod;
   }
 
+  calcTotal(type) {
+    switch(type) {
+      case "sum":
+        return this.calcSum();
+      case "max":
+        return this.calcMax();
+      default:
+        return undefined;
+    }
+  }
+
   calcSum() {
     return this.state.dice.reduce((acc, die) => acc + die.value, 0) + this.state.mod;
+  }
+
+  calcMax() {
+    return Math.max(0, ...this.state.dice.map(d => d.value)) + this.state.mod;
   }
 
   render() {
@@ -87,7 +102,7 @@ class Pool extends Component {
               </button>
             </div>
             <div className="col-4">
-              Total: {this.calcSum()}
+              Total: { this.calcTotal(this.props.calcType) }
             </div>
           </div>
           <div className="row">
