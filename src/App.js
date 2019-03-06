@@ -67,7 +67,7 @@ class App extends Component {
   }
 
   calcSum() {
-    return this.state.dice.reduce((acc, die) => acc + die.value, 0);
+    return this.state.dice.reduce((acc, die) => acc + die.value, 0) + this.state.mod;
   }
 
   render() {
@@ -85,13 +85,17 @@ class App extends Component {
         <div id="controllers">
           <div id="total-display" className="row">
             <div className="col-8" style={{padding: 0}}>
-              <button style={{float: "left"}} onClick={() => {this.setState({mod: this.state.mod - 1})}}>
+              <button className="mod-minus" onClick={() => {
+                  this.setState({mod: this.state.mod - 1})
+                }}>
                 -
               </button>
-              {this.renderDesc()}
-              <button style={{float: "right"}} onClick={() => {this.setState({mod: this.state.mod + 1})}}>
+              <button className="mod-plus" onClick={() => {
+                  this.setState({mod: this.state.mod + 1})
+                }}>
                 +
               </button>
+              {this.renderDesc()}
             </div>
             <div className="col-4">
               Total: {this.calcSum()}
