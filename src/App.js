@@ -59,7 +59,7 @@ class App extends Component {
         </div>
         <div className="die-remove">
           <button onClick={() => this.removeDie(key)}>
-            Drop
+            This is useless, rid yourself of it
           </button>
         </div>
       </div>
@@ -118,7 +118,7 @@ class App extends Component {
                 dice.forEach((d) => {d.value = 0});
                 this.setState({dice});
               }}>
-              Reset Dice
+              Reset All The Dice
             </button>
           </div>
         </div>
