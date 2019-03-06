@@ -35,17 +35,17 @@ button {
 }
 
 .die button {
-  background-color: lightblue;
-  padding: 5px;
+  background-color: orange;
+  padding: 10px;
   width: 100%;
 }
 
 .die-label {
-  font-size: small;
+  font-size: large;
 }
 
 .die-remove button {
-  font-size: small;
+  font-size: large;
   padding: 5px;
   width: 100%;
   background-color: pink;
@@ -56,11 +56,11 @@ button {
 }
 
 #adders button {
-  background-color: yellowgreen;
+  background-color: yellow;
 }
 
 #controllers button {
-  background-color: orange;
+  background-color: turquoise;
 }
 
 @keyframes App-logo-spin {
