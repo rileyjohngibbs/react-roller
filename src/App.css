@@ -51,6 +51,16 @@ button {
   background-color: grey;
 }
 
+.mod-minus {
+  float: left;
+  height: 100%;
+}
+
+.mod-plus {
+  float: right;
+  height: 100%;
+}
+
 #total-display {
   font-size: small;
 }
