@@ -35,7 +35,7 @@ button {
 }
 
 .die button {
-  background-color: lightblue;
+  background-color: red;
   padding: 5px;
   width: 100%;
 }
@@ -56,11 +56,11 @@ button {
 }
 
 #adders button {
-  background-color: yellowgreen;
+  background-color: grey;
 }
 
 #controllers button {
-  background-color: orange;
+  background-color: lightblue;
 }
 
 @keyframes App-logo-spin {
