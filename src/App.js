@@ -73,6 +73,7 @@ class App extends Component {
   render() {
     return (
       <div className="App container">
+      <h1> Miles's Code</h1>
         <div id="adders" className="row">
           {[4, 6, 8, 10, 100, 12, 20].map((faces, key) => {
             return (
