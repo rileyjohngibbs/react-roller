@@ -1,7 +1,23 @@
+//Alberto Mancarella
+
+
+
 import React, { Component } from 'react';
 import './App.css';
 
 import Die from './Die';
+
+let counter = 0;
+
+   if(counter>11){
+    const buttons = document.getElementById("disabled");
+    buttons.disabled = true;
+    console.log(counter)
+    }
+    else{
+      counter+=1
+    }
+  }
 
 class App extends Component {
   constructor(props) {
@@ -29,6 +45,9 @@ class App extends Component {
     dice[key].value = dice[key].roll();
     this.setState({dice});
   }
+
+
+
 
   renderDesc() {
     const counts = {};
@@ -67,7 +86,7 @@ class App extends Component {
   }
 
   calcSum() {
-    return this.state.dice.reduce((acc, die) => acc + die.value, 0);
+    return this.state.dice.reduce((acc, die) => acc + die.value, 0) + this.state.mod;
   }
 
   render() {
@@ -85,23 +104,30 @@ class App extends Component {
         <div id="controllers">
           <div id="total-display" className="row">
             <div className="col-8" style={{padding: 0}}>
-              <button style={{float: "left"}} onClick={() => {this.setState({mod: this.state.mod - 1})}}>
+              <button className="mod-minus" onClick={() => {
+                  this.setState({mod: this.state.mod - 1})
+                }}>
                 -
               </button>
-              {this.renderDesc()}
-              <button style={{float: "right"}} onClick={() => {this.setState({mod: this.state.mod + 1})}}>
+              <button className="mod-plus" onClick={() => {
+                  this.setState({mod: this.state.mod + 1})
+                }}>
                 +
               </button>
+              {this.renderDesc()}
             </div>
             <div className="col-4">
               Total: {this.calcSum()}
             </div>
           </div>
           <div className="row">
-            <button className="col" onClick={() => {
+            <button id="disabled" className="col" onClick={() => {
+              counter123();
                 this.state.dice.forEach((_, key) => {
                   this.rollDie(key);
                 });
+  
+                
               }}>
               Roll Dice
             </button>
@@ -131,5 +157,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
