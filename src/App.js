@@ -85,11 +85,11 @@ class App extends Component {
         <div id="controllers">
           <div id="total-display" className="row">
             <div className="col-8" style={{padding: 0}}>
-              <button style={{float: "left"}} onClick={() => {this.setState({mod: this.state.mod - 1})}}>
+              <button style={{float: "left", height: "100%"}} onClick={() => {this.setState({mod: this.state.mod - 1})}}>
                 -
               </button>
               {this.renderDesc()}
-              <button style={{float: "right"}} onClick={() => {this.setState({mod: this.state.mod + 1})}}>
+              <button style={{float: "right", height: "100%"}} onClick={() => {this.setState({mod: this.state.mod + 1})}}>
                 +
               </button>
             </div>
