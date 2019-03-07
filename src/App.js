@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+  import React, { Component } from 'react';
 import './App.css';
 
 import Die from './Die';
 
+
+let counter = 0
 class App extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,10 @@ class App extends Component {
     const dice = this.state.dice;
     dice[key].value = dice[key].roll();
     this.setState({dice});
-  }
+    counter ++;
+    return counter
+    }
+  
 
   renderDesc() {
     const counts = {};
@@ -70,6 +75,8 @@ class App extends Component {
     return this.state.dice.reduce((acc, die) => acc + die.value, 0);
   }
 
+
+
   render() {
     return (
       <div className="App container">
@@ -85,6 +92,7 @@ class App extends Component {
         <div id="controllers">
           <div id="total-display" className="row">
             <div className="col-8" style={{padding: 0}}>
+
               <button style={{float: "left"}} onClick={() => {this.setState({mod: this.state.mod - 1})}}>
                 -
               </button>
@@ -108,6 +116,7 @@ class App extends Component {
             <button className="col" onClick={() => {
                 while (this.state.dice.length) {
                   this.removeDie(0);
+                  counter = 0;
                 }
                 this.setState({mod: 0});
               }}>
@@ -117,9 +126,11 @@ class App extends Component {
                 const dice = this.state.dice;
                 dice.forEach((d) => {d.value = 0});
                 this.setState({dice});
+                counter = 0;
               }}>
               Reset Dice
             </button>
+            <button> ROLLS: {counter} </button>
           </div>
         </div>
         <div id="dicepool" className="row">
