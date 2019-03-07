@@ -1,9 +1,18 @@
 button {
   font-size: inherit;
+  border: 1px solid white;
 }
 
 button:focus {
   outline: none !important;
+}
+
+button:hover:enabled {
+  color: white;
+}
+
+button:active:enabled {
+  background-color: gray;
 }
 
 .App {

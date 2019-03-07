@@ -74,7 +74,7 @@ class App extends Component {
     return (
       <div className="App container">
         <div id="adders" className="row">
-          {[4, 6, 8, 10, 100, 12, 20].map((faces, key) => {
+          {[4, 6, 8, 10, 100, 12, 20, 50, 200, 739].map((faces, key) => {
             return (
               <button className="col" key={key} onClick={() => {this.addDie(faces);}}>
                 +d{faces}
