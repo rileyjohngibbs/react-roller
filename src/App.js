@@ -2,9 +2,21 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Die from './Die';
+let cheat = false;
+
+function cheatCheck() {
+  if (cheat === false){
+    cheat = true;
+  }
+  else{
+    cheat = false;
+  }
+}
 
 class App extends Component {
+  
   constructor(props) {
+
     super(props);
     this.state = {
       dice: [],
@@ -27,12 +39,12 @@ class App extends Component {
   rollDie(key) {
     const dice = this.state.dice;
     dice[key].value = dice[key].roll();
-    if (cheat == true){
-      this.setState(123456789);
+    if (cheat === true){
+      dice[key].value = Die(faces);
     }
-    else {
+    
       this.setState({dice});
-    }
+
   }
     
   
@@ -56,19 +68,8 @@ class App extends Component {
   }
 
   renderDie(key) {
-    let cheat = false;
-    function cheatCheck() {
-      if (cheat == false){
-        cheat = true;
-      }
-      else{
-        cheat = false;
-      }
-    }
     return (
       <div key={key} className="die col-2">
-        <button onClick={() => cheatCheck()}>
-        </button>
         <button onClick={() => this.rollDie(key)}>
           {this.state.dice[key].value}
         </button>
@@ -131,6 +132,10 @@ class App extends Component {
               }}>
               Clear Pool
             </button>
+            <button onClick="cheatCheck()">
+             Cheater Button for Cheaters
+             </button>
+
             <button className="col" onClick={() => {
                 const dice = this.state.dice;
                 dice.forEach((d) => {d.value = 0});
