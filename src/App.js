@@ -3,6 +3,8 @@ import './App.css';
 
 import Die from './Die';
 
+let counter = 0;
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -25,9 +27,17 @@ class App extends Component {
   }
 
   rollDie(key) {
+    if (counter < 8) {
     const dice = this.state.dice;
     dice[key].value = dice[key].roll();
     this.setState({dice});
+    counter += 1;
+    }
+    else {
+      const button = document.getElementById('roll');
+      button.disabled = true;
+      let counter = 0;
+    }
   }
 
   renderDesc() {
@@ -99,7 +109,7 @@ class App extends Component {
             </div>
           </div>
           <div className="row">
-            <button className="col" onClick={() => {
+            <button id="roll" className="col" onClick={() => {
                 this.state.dice.forEach((_, key) => {
                   this.rollDie(key);
                 });
@@ -111,6 +121,9 @@ class App extends Component {
                   this.removeDie(0);
                 }
                 this.setState({mod: 0});
+                const button = document.getElementById('roll');
+                button.disabled = false;
+                let counter = 0;
               }}>
               Clear dat pool boi!
             </button>
@@ -118,6 +131,9 @@ class App extends Component {
                 const dice = this.state.dice;
                 dice.forEach((d) => {d.value = 0});
                 this.setState({dice});
+                const button = document.getElementById('roll');
+                button.disabled = false;
+                let counter = 0;
               }}>
               Reset these dice fam!
             </button>
