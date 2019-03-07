@@ -123,7 +123,6 @@ class App extends Component {
                 this.setState({mod: 0});
                 const button = document.getElementById('roll');
                 button.disabled = false;
-                let counter = 0;
               }}>
               Clear dat pool boi!
             </button>
@@ -133,7 +132,6 @@ class App extends Component {
                 this.setState({dice});
                 const button = document.getElementById('roll');
                 button.disabled = false;
-                let counter = 0;
               }}>
               Reset these dice fam!
             </button>
