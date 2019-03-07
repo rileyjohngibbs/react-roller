@@ -35,7 +35,7 @@ button {
 }
 
 .die button {
-  background-color: lightblue;
+  background-color: red;
   padding: 5px;
   width: 100%;
 }
@@ -48,20 +48,31 @@ button {
   font-size: small;
   padding: 5px;
   width: 100%;
-  background-color: pink;
+  background-color: grey;
+}
+
+.mod-minus {
+  float: left;
+  height: 100%;
+}
+
+.mod-plus {
+  float: right;
+  height: 100%;
 }
 
 #total-display {
-  font-size: large;
+  font-size: small;
 }
 
 #adders button {
-  background-color: yellowgreen;
+  background-color: red;
 }
 
 #controllers button {
-  background-color: orange;
+  background-color: lightblue;
 }
+
 
 @keyframes App-logo-spin {
   from {

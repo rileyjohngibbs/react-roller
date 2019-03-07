@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Die from './Die';
-
+let rollCount = 0
 class App extends Component {
   constructor(props) {
     super(props);
@@ -28,6 +28,8 @@ class App extends Component {
     const dice = this.state.dice;
     dice[key].value = dice[key].roll();
     this.setState({dice});
+    rollCount += 1;
+    return rollCount;
   }
 
   renderDesc() {
@@ -67,7 +69,7 @@ class App extends Component {
   }
 
   calcSum() {
-    return this.state.dice.reduce((acc, die) => acc + die.value, 0);
+    return this.state.dice.reduce((acc, die) => acc + die.value, 0) + this.state.mod;
   }
 
   render() {
@@ -85,13 +87,17 @@ class App extends Component {
         <div id="controllers">
           <div id="total-display" className="row">
             <div className="col-8" style={{padding: 0}}>
-              <button style={{float: "left"}} onClick={() => {this.setState({mod: this.state.mod - 1})}}>
+              <button className="mod-minus" onClick={() => {
+                  this.setState({mod: this.state.mod - 1})
+                }}>
                 -
               </button>
-              {this.renderDesc()}
-              <button style={{float: "right"}} onClick={() => {this.setState({mod: this.state.mod + 1})}}>
+              <button className="mod-plus" onClick={() => {
+                  this.setState({mod: this.state.mod + 1})
+                }}>
                 +
               </button>
+              {this.renderDesc()}
             </div>
             <div className="col-4">
               Total: {this.calcSum()}
@@ -108,6 +114,7 @@ class App extends Component {
             <button className="col" onClick={() => {
                 while (this.state.dice.length) {
                   this.removeDie(0);
+                  rollCount = 0
                 }
                 this.setState({mod: 0});
               }}>
@@ -122,6 +129,9 @@ class App extends Component {
             </button>
           </div>
         </div>
+        <button id="controllers">
+        Number Of Rolls: {rollCount}
+        </button>
         <div id="dicepool" className="row">
           {this.state.dice.map((_, key) => {
             return this.renderDie(key);
