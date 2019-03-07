@@ -103,7 +103,7 @@ class App extends Component {
                   this.rollDie(key);
                 });
               }}>
-              Roll Dice
+              Roll them there dice boi!
             </button>
             <button className="col" onClick={() => {
                 while (this.state.dice.length) {
@@ -111,14 +111,14 @@ class App extends Component {
                 }
                 this.setState({mod: 0});
               }}>
-              Clear Pool
+              Clear dat pool boi!
             </button>
             <button className="col" onClick={() => {
                 const dice = this.state.dice;
                 dice.forEach((d) => {d.value = 0});
                 this.setState({dice});
               }}>
-              Reset Dice
+              Reset these dice fam!
             </button>
           </div>
         </div>
