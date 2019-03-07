@@ -72,9 +72,6 @@ button {
 #controllers button {
   background-color: lightblue;
 }
-
-#NumOfRollsButton button{
-  background-color: lightblue;
 }
 
 @keyframes App-logo-spin {
