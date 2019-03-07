@@ -29,13 +29,13 @@ button {
 
 .die {
   margin: 5px 0;
-  background-color: #EEE;
+  background-color: yellow;
   border: 1px solid white;
   padding: 0;
 }
 
 .die button {
-  background-color: lightblue;
+  background-color: blue;
   padding: 5px;
   width: 100%;
 }
@@ -56,11 +56,11 @@ button {
 }
 
 #adders button {
-  background-color: yellowgreen;
+  background-color: salmon;
 }
 
 #controllers button {
-  background-color: orange;
+  background-color: lavender;
 }
 
 @keyframes App-logo-spin {

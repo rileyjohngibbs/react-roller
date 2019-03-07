@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Die from './Die';
-
+let counter = 0
 class App extends Component {
   constructor(props) {
     super(props);
@@ -28,6 +28,8 @@ class App extends Component {
     const dice = this.state.dice;
     dice[key].value = dice[key].roll();
     this.setState({dice});
+    counter += 1 
+    return counter
   }
 
   renderDesc() {
@@ -59,7 +61,7 @@ class App extends Component {
         </div>
         <div className="die-remove">
           <button onClick={() => this.removeDie(key)}>
-            Drop
+            This is useless, rid yourself of it
           </button>
         </div>
       </div>
@@ -74,7 +76,7 @@ class App extends Component {
     return (
       <div className="App container">
         <div id="adders" className="row">
-          {[4, 6, 8, 10, 100, 12, 20].map((faces, key) => {
+          {[4, 6, 8, 15, 100, 50, 200].map((faces, key) => {
             return (
               <button className="col" key={key} onClick={() => {this.addDie(faces);}}>
                 +d{faces}
@@ -108,6 +110,7 @@ class App extends Component {
             <button className="col" onClick={() => {
                 while (this.state.dice.length) {
                   this.removeDie(0);
+                  counter = 0
                 }
                 this.setState({mod: 0});
               }}>
@@ -118,10 +121,13 @@ class App extends Component {
                 dice.forEach((d) => {d.value = 0});
                 this.setState({dice});
               }}>
-              Reset Dice
+              Reset All The Dice
             </button>
           </div>
         </div>
+        <button>
+          roll count: {counter}
+        </button> 
         <div id="dicepool" className="row">
           {this.state.dice.map((_, key) => {
             return this.renderDie(key);
