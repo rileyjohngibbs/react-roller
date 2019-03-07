@@ -8,7 +8,7 @@ button {
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+  height: 50vmin;
   pointer-events: none;
 }
 
@@ -48,19 +48,19 @@ button {
   font-size: small;
   padding: 5px;
   width: 100%;
-  background-color: pink;
+  background-color: purple;
 }
 
 #total-display {
-  font-size: large;
+  font-size: small;
 }
 
 #adders button {
-  background-color: yellowgreen;
+  background-color: violet;
 }
 
 #controllers button {
-  background-color: orange;
+  background-color: pink;
 }
 
 @keyframes App-logo-spin {
