@@ -7,8 +7,9 @@ import './App.css';
 
 import Die from './Die';
 
-function counter123(){
+
 let counter = 0;
+function counter123(){
    if(counter>11){
     const buttons = document.getElementById("disabled");
     buttons.disabled = true;
