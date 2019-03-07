@@ -27,8 +27,15 @@ class App extends Component {
   rollDie(key) {
     const dice = this.state.dice;
     dice[key].value = dice[key].roll();
-    this.setState({dice});
+    if (cheat == true){
+      this.setState(123456789);
+    }
+    else {
+      this.setState({dice});
+    }
   }
+    
+  
 
   renderDesc() {
     const counts = {};
@@ -49,8 +56,19 @@ class App extends Component {
   }
 
   renderDie(key) {
+    let cheat = false;
+    function cheatCheck() {
+      if (cheat == false){
+        cheat = true;
+      }
+      else{
+        cheat = false;
+      }
+    }
     return (
       <div key={key} className="die col-2">
+        <button onClick={() => cheatCheck()}>
+        </button>
         <button onClick={() => this.rollDie(key)}>
           {this.state.dice[key].value}
         </button>

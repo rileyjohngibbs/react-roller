@@ -5,6 +5,9 @@ export default class Die {
   }
 
   roll() {
-    return Math.ceil(Math.random() * this.faces);
-  }
+    let final = Math.ceil(Math.random() * this.faces);
+    return final;
+   }
+
+  
 }
