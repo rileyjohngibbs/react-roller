@@ -129,7 +129,7 @@ class App extends Component {
             </button>
           </div>
         </div>
-        <button>
+        <button id="NumOfRollsButton">
         Number Of Rolls: {rollCount}
         </button>
         <div id="dicepool" className="row">
