@@ -38,7 +38,7 @@ class App extends Component {
         : counts[die.faces] + 1;
     });
     const pool = Object.keys(counts).map(
-      (type) => counts[type] + "d" + type
+      (type) => counts[type] + " die " + type
     ).join(" + ");
     const mod = this.state.mod
       ? this.state.mod > 0
@@ -70,6 +70,7 @@ class App extends Component {
     return this.state.dice.reduce((acc, die) => acc + die.value, 0);
   }
 
+  
   render() {
     return (
       <div className="App container">
