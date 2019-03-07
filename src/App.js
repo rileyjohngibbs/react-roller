@@ -3,6 +3,8 @@ import './App.css';
 
 import Die from './Die';
 
+let counter = 0;
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -25,9 +27,17 @@ class App extends Component {
   }
 
   rollDie(key) {
+    if (counter < 8) {
     const dice = this.state.dice;
     dice[key].value = dice[key].roll();
     this.setState({dice});
+    counter += 1;
+    }
+    else {
+      const button = document.getElementById('roll');
+      button.disabled = true;
+      let counter = 0;
+    }
   }
 
   renderDesc() {
@@ -38,7 +48,7 @@ class App extends Component {
         : counts[die.faces] + 1;
     });
     const pool = Object.keys(counts).map(
-      (type) => counts[type] + "d" + type
+      (type) => counts[type] + " die " + type
     ).join(" + ");
     const mod = this.state.mod
       ? this.state.mod > 0
@@ -70,6 +80,7 @@ class App extends Component {
     return this.state.dice.reduce((acc, die) => acc + die.value, 0);
   }
 
+  
   render() {
     return (
       <div className="App container">
@@ -98,27 +109,31 @@ class App extends Component {
             </div>
           </div>
           <div className="row">
-            <button className="col" onClick={() => {
+            <button id="roll" className="col" onClick={() => {
                 this.state.dice.forEach((_, key) => {
                   this.rollDie(key);
                 });
               }}>
-              Roll Dice
+              Roll them there dice boi!
             </button>
             <button className="col" onClick={() => {
                 while (this.state.dice.length) {
                   this.removeDie(0);
                 }
                 this.setState({mod: 0});
+                const button = document.getElementById('roll');
+                button.disabled = false;
               }}>
-              Clear Pool
+              Clear dat pool boi!
             </button>
             <button className="col" onClick={() => {
                 const dice = this.state.dice;
                 dice.forEach((d) => {d.value = 0});
                 this.setState({dice});
+                const button = document.getElementById('roll');
+                button.disabled = false;
               }}>
-              Reset Dice
+              Reset these dice fam!
             </button>
           </div>
         </div>
