@@ -85,12 +85,12 @@ class App extends Component {
         <div id="controllers">
           <div id="total-display" className="row">
             <div className="col-8" style={{padding: 0}}>
-              <button className="mod-minus" onClick={() => {
+              <button className="mod-minus" style={{float: "left", height: "100%"}} onClick={() => {
                   this.setState({mod: this.state.mod - 1})
                 }}>
                 -
               </button>
-              <button className="mod-plus" onClick={() => {
+              <button className="mod-plus" style={{float: "right", height: "100%"}} onClick={() => {
                   this.setState({mod: this.state.mod + 1})
                 }}>
                 +
