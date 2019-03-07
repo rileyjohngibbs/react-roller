@@ -13,7 +13,7 @@ button {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: yellow;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -56,11 +56,11 @@ button {
 }
 
 #adders button {
-  background-color: yellowgreen;
+  background-color: blue;
 }
 
 #controllers button {
-  background-color: orange;
+  background-color: maroon;
 }
 
 @keyframes App-logo-spin {
@@ -70,4 +70,8 @@ button {
   to {
     transform: rotate(360deg);
   }
+}
+
+body {
+  background-color: yellow;
 }
