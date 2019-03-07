@@ -3,6 +3,8 @@ import './App.css';
 
 import Die from './Die';
 
+var custom = prompt("How many sides will your custom die have?");
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -70,11 +72,16 @@ class App extends Component {
     return this.state.dice.reduce((acc, die) => acc + die.value, 0);
   }
 
+  calcProduct() {
+    return this.state.dice.reduce((acc, die) => acc * die.value, 1);
+  }
+
+
   render() {
     return (
       <div className="App container">
         <div id="adders" className="row">
-          {[4, 6, 8, 10, 100, 12, 20].map((faces, key) => {
+          {[3, 5, 7, 13, 15, 17, custom].map((faces, key) => {
             return (
               <button className="col" key={key} onClick={() => {this.addDie(faces);}}>
                 +d{faces}
@@ -94,7 +101,9 @@ class App extends Component {
               </button>
             </div>
             <div className="col-4">
-              Total: {this.calcSum()}
+              Added: {this.calcSum()}
+              <br></br>
+              Multiplied: {this.calcProduct()}
             </div>
           </div>
           <div className="row">
