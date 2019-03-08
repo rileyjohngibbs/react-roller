@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import DieComp from './DieComp';
+import PoolDescription from './PoolDescription';
 
 class App extends Component {
   constructor(props) {
@@ -28,24 +29,6 @@ class App extends Component {
     const dice = this.state.dice;
     dice[key].value = Math.ceil(Math.random() * dice[key].faces);
     this.setState({dice});
-  }
-
-  renderDesc() {
-    const counts = {};
-    this.state.dice.forEach((die) => {
-      counts[die.faces] = counts[die.faces] === undefined
-        ? 1
-        : counts[die.faces] + 1;
-    });
-    const pool = Object.keys(counts).map(
-      (type) => counts[type] + "d" + type
-    ).join(" + ");
-    const mod = this.state.mod
-      ? this.state.mod > 0
-        ? " + " + this.state.mod
-        : " - " + (-this.state.mod)
-      : "";
-    return pool + mod;
   }
 
   calcSum() {
@@ -82,7 +65,7 @@ class App extends Component {
               <button style={{float: "left"}} onClick={() => {this.setState({mod: this.state.mod - 1})}}>
                 -
               </button>
-              {this.renderDesc()}
+              <PoolDescription dice={this.state.dice} mod={this.state.mod} />
               <button style={{float: "right"}} onClick={() => {this.setState({mod: this.state.mod + 1})}}>
                 +
               </button>
