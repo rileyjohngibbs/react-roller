@@ -3,13 +3,27 @@ import './App.css';
 
 import Die from './Die';
 
+
 class App extends Component {
+  
   constructor(props) {
+
     super(props);
+    this.cheat = false;
     this.state = {
       dice: [],
       mod: 0
     };
+  }
+
+
+  cheatCheck() {
+    if (this.cheat === false){
+      this.cheat = true;
+    }
+    else {
+      this.cheat = false;
+    }
   }
 
   addDie(faces) {
@@ -27,8 +41,15 @@ class App extends Component {
   rollDie(key) {
     const dice = this.state.dice;
     dice[key].value = dice[key].roll();
-    this.setState({dice});
+    if (this.cheat === true){
+      dice[key].value = dice[key].faces;
+    }
+    
+      this.setState({dice});
+
   }
+    
+  
 
   renderDesc() {
     const counts = {};
@@ -113,6 +134,10 @@ class App extends Component {
               }}>
               Clear Pool
             </button>
+            <button onClick={()=>this.cheatCheck()}>
+             Cheater Button for Cheaters
+             </button>
+
             <button className="col" onClick={() => {
                 const dice = this.state.dice;
                 dice.forEach((d) => {d.value = 0});
